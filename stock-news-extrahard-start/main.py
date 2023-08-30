@@ -6,7 +6,7 @@ COMPANY_NAME = "Tesla Inc"
 
 
 end_point_stock = 'https://www.alphavantage.co/query/'
-api_key_stock = 'P24P6WWRFNQYPFK2'
+api_key_stock = 'API_KEY_STOCK'
 params_stock = {
     "function": "TIME_SERIES_DAILY",
     "symbol": STOCK,
@@ -27,7 +27,7 @@ else:
 
 
 end_point_news = 'https://newsapi.org/v2/everything/'
-api_key_news = 'f53100aa20a545059d06282ec07f20cf'
+api_key_news = 'API_KEY_NEWS'
 params_news = {
     "apikey": api_key_news,
     "q": COMPANY_NAME,
@@ -40,13 +40,13 @@ data = r.json()
 three_news = data["articles"][:3]
 
 
-account_sid = 'AC4c067a311cb216e274a864024eab570e'
-auth_token = '1ee3076cf97c142875a4b5f9b9c5c50b'
+account_sid = 'ACCOUNT_ID'
+auth_token = 'TOKEN'
 if abs(difference) >= 5:
     client = Client(account_sid, auth_token)
     for it in three_news:
         message = client.messages.create(
             body=f'{STOCK}:{emoji}{abs(difference)}%\nHeadline: {it["title"]}\nBrief: {it["description"]}',
             from_='+18642522521',
-            to='+77787329544'
+            to='YOUR_PHONE'
         )
